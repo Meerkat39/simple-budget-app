@@ -1,12 +1,40 @@
-# React + Vite
+# simple-budget-app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このプロジェクトは、**React** と **Vite** を使用して構築したシンプルな家計簿アプリです。  
+Reactの複数のフックの実践的な使い方を習得することを目的に制作しました。
 
-Currently, two official plugins are available:
+## 主な機能
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 1. 取引の記録
+- **収入 / 支出** を選択
+- **金額・カテゴリ・メモ** を入力
+- 「追加」ボタンで保存
 
-## Expanding the ESLint configuration
+### 2. 月別集計
+- 当月の **収入・支出・残高** を自動計算
+- 月を選んで表示を切り替え可能
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 3. 履歴表示
+- 入力した取引を一覧表示
+- 個別に削除が可能
+
+---
+
+## 🧠 Reactフックの活用
+
+| フック名      | 使用例                                        |
+|---------------|-----------------------------------------------|
+| `useState`    | フォーム入力、設定情報（通貨・テーマ）などの状態管理 |
+| `useReducer`  | 取引データの追加・削除などの操作               |
+| `useContext`  | 設定情報をアプリ全体で共有                     |
+| `useEffect`   | 月が変わったときに自動で集計を再計算           |
+
+
+## 使用技術
+
+### フロントエンド
+
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- JavaScript / HTML / CSS
