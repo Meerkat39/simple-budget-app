@@ -16,7 +16,7 @@ const TransactionHistory = () => {
       {transactions.map((transaction) => {
         return (
           <p key={transaction.id}>
-            {transaction.description}:{transaction.amount}
+            {transaction.type}:{transaction.amount}
             <button
               onClick={() => {
                 handleSubmit(transaction.id);

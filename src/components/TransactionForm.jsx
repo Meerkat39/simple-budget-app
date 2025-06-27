@@ -7,7 +7,7 @@ import SelectField from "./SelectField";
 const TransactionForm = () => {
   const [type, setType] = useState("収入");
   const [amount, setAmount] = useState();
-  const [category, setCategory] = useState("食費");
+  const [category, setCategory] = useState("給料");
   const [description, setDescription] = useState();
 
   const dispatch = useDispatchTransaction();
@@ -25,7 +25,7 @@ const TransactionForm = () => {
       },
     });
     setAmount("");
-    setCategory("食費");
+    setCategory("給料");
     setDescription("");
   };
   /*

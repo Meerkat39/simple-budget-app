@@ -8,7 +8,7 @@ import {
 const transactionList = [
   {
     id: 1,
-    type: "income",
+    type: "収入",
     amount: 1500,
     category: "給料",
     date: "2025-06-27",
@@ -16,7 +16,7 @@ const transactionList = [
   },
   {
     id: 2,
-    type: "expense",
+    type: "支出",
     amount: 1500,
     category: "食費",
     date: "2025-06-27",

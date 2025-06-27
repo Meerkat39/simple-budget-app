@@ -31,18 +31,18 @@ const MonthlySummary = () => {
     );
 
     const income = monthTransactions
-      .filter((transaction) => transaction.type === "income")
+      .filter((transaction) => transaction.type === "収入")
       .reduce((sum, transaction) => sum + transaction.amount, 0);
 
     const expense = monthTransactions
-      .filter((transaction) => transaction.type === "expense")
+      .filter((transaction) => transaction.type === "支出")
       .reduce((sum, transaction) => sum + transaction.amount, 0);
 
     const balance = income - expense;
 
     const categoryBreakdown = { income: {}, expense: {} };
     monthTransactions
-      .filter((transaction) => transaction.type === "income")
+      .filter((transaction) => transaction.type === "収入")
       .forEach((transaction) => {
         categoryBreakdown.income[transaction.category] =
           (categoryBreakdown.income[transaction.category] || 0) +
@@ -50,7 +50,7 @@ const MonthlySummary = () => {
       });
 
     monthTransactions
-      .filter((transaction) => transaction.type === "expense")
+      .filter((transaction) => transaction.type === "支出")
       .forEach((transaction) => {
         categoryBreakdown.expense[transaction.category] =
           (categoryBreakdown.expense[transaction.category] || 0) +
