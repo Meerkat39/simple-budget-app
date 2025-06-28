@@ -4,14 +4,6 @@ import CategoryBreakdown from "./CategoryBreakdown";
 import MonthSelector from "./MonthSelector";
 import OverallSummary from "./OverallSummary";
 
-/*
-    type: "expense", // "income" または "expense"
-    amount: 1500, // 金額
-    category: "食費", // カテゴリ
-    date: "2025-06-27", // 日付
-    description: "ランチ", // メモ
-  */
-
 const MonthlySummary = () => {
   const [selectedMonth, setSelectedMonth] = useState(
     new Date().toISOString().slice(0, 7)
@@ -66,7 +58,7 @@ const MonthlySummary = () => {
   }, [transactions, selectedMonth]);
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <MonthSelector
         value={selectedMonth}
         onChange={(e) => setSelectedMonth(e.target.value)}
@@ -80,7 +72,7 @@ const MonthlySummary = () => {
         incomeBreakdown={summary.categoryBreakdown.income}
         expenseBreakdown={summary.categoryBreakdown.expense}
       />
-    </>
+    </div>
   );
 };
 

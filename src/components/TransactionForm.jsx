@@ -24,6 +24,11 @@ const TransactionForm = () => {
   }, [categories, type, category]);
 
   const handleSubmit = () => {
+    if (!amount || isNaN(parseFloat(amount)) || parseFloat(amount) <= 0) {
+      alert("有効な金額を入力してください。");
+      return;
+    }
+
     const date = new Date().toISOString().slice(0, 10);
     dispatch({
       type: "ADD_TRANSACTION",
@@ -41,17 +46,10 @@ const TransactionForm = () => {
     setCategory(currentCategoryList.length > 0 ? currentCategoryList[0] : "");
     setDescription("");
   };
-  /*
-    type: "expense", // "income" または "expense"
-    amount: 1500, // 金額
-    category: "食費", // カテゴリ
-    date: "2025-06-27", // 日付
-    description: "ランチ", // メモ
-  */
 
   return (
-    <div>
-      <h2>収支を記録</h2>
+    <div className="flex flex-col gap-4">
+      <h2 className="text-2xl font-bold mb-4">収支を記録</h2>
       <RadioGroup value={type} onChange={(e) => setType(e.target.value)} />
       <InputField
         fieldName={"金額"}
@@ -72,7 +70,12 @@ const TransactionForm = () => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
-      <button onClick={handleSubmit}>追加</button>
+      <button
+        onClick={handleSubmit}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md w-full"
+      >
+        追加
+      </button>
     </div>
   );
 };
