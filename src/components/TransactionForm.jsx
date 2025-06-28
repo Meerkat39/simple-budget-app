@@ -1,5 +1,8 @@
-import { useState } from "react";
-import { useDispatchTransaction } from "../context/useTransactionHooks";
+import { useEffect, useState } from "react";
+import {
+  useCategory,
+  useDispatchTransaction,
+} from "../context/useTransactionHooks";
 import InputField from "./InputField";
 import RadioGroup from "./RadioGroup";
 import SelectField from "./SelectField";
@@ -7,10 +10,18 @@ import SelectField from "./SelectField";
 const TransactionForm = () => {
   const [type, setType] = useState("収入");
   const [amount, setAmount] = useState();
-  const [category, setCategory] = useState("給料");
+  const categories = useCategory();
+  const [category, setCategory] = useState(categories.収入[0]);
   const [description, setDescription] = useState();
 
   const dispatch = useDispatchTransaction();
+
+  useEffect(() => {
+    const currentCategoryList = categories[type];
+    if (!currentCategoryList.includes(category)) {
+      setCategory(currentCategoryList.length > 0 ? currentCategoryList[0] : "");
+    }
+  }, [categories, type, category]);
 
   const handleSubmit = () => {
     const date = new Date().toISOString().slice(0, 10);
@@ -24,8 +35,10 @@ const TransactionForm = () => {
         description: description || "",
       },
     });
+
+    const currentCategoryList = categories[type];
     setAmount("");
-    setCategory("給料");
+    setCategory(currentCategoryList.length > 0 ? currentCategoryList[0] : "");
     setDescription("");
   };
   /*
